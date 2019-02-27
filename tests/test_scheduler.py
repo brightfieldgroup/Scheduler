@@ -1,12 +1,12 @@
-# some simple tests to show functionality of pytest
-def func(x):
-    return x + 1
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
 
+from scheduler import run_for_n_seconds
 
-def test_answer():
-    assert func(3) == 5
-
-
-def test_answer_working():
-    assert func(3) != 99
-    assert func(3) == 4
+def test_schedule_run_for_n_seconds():
+    t1 = run_for_n_seconds(2)
+    t2 = run_for_n_seconds(3)
+    print(t1)
+    print(t2)
+    assert t1 > 1
+    assert t2 > 2
